@@ -55,7 +55,6 @@
     "**/tmp/**": true,
     "**/vendor/**": true
   },
-  "git.enabled": false,
   "python.defaultInterpreterPath": "~/.pyenv/shims/python",
   "python.formatting.provider": "black",
   "python.terminal.activateEnvironment": false,
@@ -73,5 +72,6 @@
   "scm.inputFontSize": 14,
   "workbench.colorTheme": "GitHub Dark Default",
   "jupyter.askForKernelRestart": false,
-  "editor.formatOnSave": true
+  "editor.formatOnSave": true,
+  "explorer.confirmDragAndDrop": false
 }

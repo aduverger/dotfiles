@@ -1,0 +1,36 @@
+default  partial alphanumeric_keys modifier_keys
+xkb_symbols "euro" {
+
+    include "us(basic)"
+    name[Group1]= "English (FR)";
+
+
+    key <AD01> { [         q,          Q,         U00E2,            U00C2 ] };
+    key <AD02> { [         w,          W,         U00E8,            U00C8 ] };
+    key <AD03> { [         e,          E,        eacute,           Eacute ] };
+    key <AD04> { [         r,          R,    registered,       registered ] };
+    key <AD05> { [         t,          T,         thorn,            THORN ] };
+    key <AD06> { [         y,          Y,         U00FB,            U00DB ] };
+    key <AD07> { [         u,          U,         U00F9,            U00D9 ] };
+    key <AD08> { [         i,          I,         U00EE,            U00CE ] };
+    key <AD09> { [         o,          O,         U00F4,            U00D4 ] };
+    key <AD10> { [	       p,        	 P,             p,                P	]	};
+    key <AD11> { [ bracketleft,	braceleft	]	};
+    key <AD12> { [ bracketright,	braceright	]	};
+
+    key <AC01> { [         a,          A,         U00E0,            U00C0 ] };
+    key <AC02> { [         s,          S,         U00E4,            U00C4 ] };
+    key <AC03> { [         d,          D,         U00EA,            U00CA ] };
+    key <AC07> { [         j,          J,         U00FC,            U00DC ] };
+    key <AC08> { [         k,          K,         U00EF,            U00CF ] };
+    key <AC09> { [         l,          L,         U00F6,            U00D6 ] };
+
+    key <AB01> { [         z,          Z,            ae,               AE ] };
+    key <AB03> { [         c,          C,         U00E7,            U00C7 ] };
+    key <AB05> { [         b,          B,         U03B2,            U0392 ] };
+    key <AB06> { [         n,          N,        ntilde,           Ntilde ] };
+    key <AB07> { [         m,          M,            mu,               mu ] };
+
+    include "level3(ralt_switch)"
+
+};
