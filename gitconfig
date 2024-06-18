@@ -1,6 +1,7 @@
 [user]
-        email = --
+        email = xxx@xxx.fr
         name = Alexandre Duverger
+	signingkey = /Users/duveral/.ssh/id_rsa.pub
 [color]
         branch = auto
         diff = auto
@@ -14,8 +15,8 @@
 
 [core]
         pager = less -FMRiX
-        excludesfile = $HOME/.config/git/excludes
-        editor = code --wait
+	excludesfile = /Users/duveral/.config/git/excludes
+	editor = code --wait
 
 [push]
         default = simple
@@ -41,3 +42,11 @@
 
 [init]
         defaultBranch = mainline
+
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[gpg]
+	format = ssh
