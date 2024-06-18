@@ -1,0 +1,75 @@
+ZSH_THEME="robbyrussell"
+
+# Auto-completion case_sensitive
+zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
+autoload -Uz compinit && compinit
+
+# Load version control information
+autoload -Uz vcs_info
+precmd() { vcs_info }
+
+# Enable checking for (un)staged changes, enabling use of %u and %c
+zstyle ':vcs_info:*' check-for-changes true
+# Set custom strings for an unstaged vcs repo changes (*) and staged changes (+)
+zstyle ':vcs_info:*' unstagedstr '*'
+zstyle ':vcs_info:*' stagedstr '+'
+
+# Format the vcs_info_msg_0_ variable
+zstyle ':vcs_info:git:*' formats 'git:(%b)%u%c '
+zstyle ':vcs_info:git:*' actionformats '(%b)%a%u%c '
+ 
+# Set up the prompt (with git branch name)
+setopt PROMPT_SUBST
+export PROMPT='
+%* | %B%F{cyan}%2~%f %F{magenta}${vcs_info_msg_0_}%f%b
+%(?.%F{green}➜ .%F{red}?%?)%f '
+
+# (macOS-only) Prevent Homebrew from reporting - https://github.com/Homebrew/brew/blob/master/docs/Analytics.md
+export HOMEBREW_NO_ANALYTICS=1
+
+
+# Load pyenv (to manage your Python versions)
+export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+type -a pyenv > /dev/null && eval "$(pyenv init -)" && eval "$(pyenv virtualenv-init -)"
+
+# Disable warning about insecure completion-dependent directories
+ZSH_DISABLE_COMPFIX=true
+
+# Store your own aliases in the ~/.aliases file and load the here.
+[[ -f "$HOME/.aliases" ]] && source "$HOME/.aliases"
+
+# Load zsh plugins
+[[ -f "$HOME/.zsh-plugins/.ssh-agent" ]] && source "$HOME/.zsh-plugins/.ssh-agent"
+
+# Encoding stuff for the terminal
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+export BUNDLER_EDITOR=code
+export EDITOR=code
+
+# autoload -U +X bashcompinit && bashcompinit
+
+# Add path for soft folder
+export PATH="${HOME}/soft:${PATH}"
+
+# Add path for toolbox
+export PATH=$PATH:$HOME/.toolbox/bin
+export JAVA_HOME="/Library/Java/JavaVirtualMachines/amazon-corretto-18.jdk/Contents/Home"
+
+# Color for ls - ll
+export CLICOLOR=1
+export LSCOLORS=ExGxBxDxCxEgEdxbxgxcxd
+
+autoload -U up-line-or-beginning-search
+autoload -U down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+bindkey "^[[A" up-line-or-beginning-search # Up
+bindkey "^[[B" down-line-or-beginning-search # Down
+
+# Load NVM
+# source ~/.nvm/nvm.sh
+# [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+eval "$(/opt/homebrew/bin/brew shellenv)"
+# Set up mise for runtime management
+eval "$(mise activate zsh)"
