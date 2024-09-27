@@ -1,6 +1,6 @@
 [user]
-        email = xxx@xxx.fr
-        name = Alexandre Duverger
+	email = alexandre.duverger@proton.me
+	name = alexandre duverger
 	signingkey = /Users/duveral/.ssh/id_rsa.pub
 [color]
         branch = auto
